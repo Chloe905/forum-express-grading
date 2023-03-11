@@ -8,6 +8,10 @@
       <div class="card-body">
         <h5 class="card-title">{{user.name}}</h5>
         <p class="card-text">{{user.email}}</p>
+        <h6>{{user.commentedRestaurants.length}}已評論餐廳</h6>
+        <h6>{{user.FavoritedRestaurants.length}}收藏的餐廳</h6>
+        <h6>{{user.Followings.length}}Followings(追蹤者)</h6>
+        <h6>{{user.Followers.length}}Followers(追隨者)</h6>
         {{#ifCond user.id loginUser.id}}
         <a href="/users/{{user.id}}/edit" class="btn btn-primary">Edit</a>
         {{/ifCond}}
@@ -16,13 +20,53 @@
   </div>
 </div>
 
-<div class="card mt-3">
-  <h5 class="card-header">{{user.commentedRestaurants.length}}已評論餐廳</h5>
-  <div class="card-body">
-    {{#each user.commentedRestaurants}}
-    <a href="/restaurants/{{this.id}}" style="text-decoration:none;">
-      <img src="{{this.image}}" title="{{this.name}}" class="m-3" style="height:100px; width:100px; object-fit:cover">
-    </a>
-    {{/each}}
+<div class="row ">
+  <div class="col-md-4">
+    <div class="card mt-3">
+      <h5 class="card-header">{{user.Followings.length}}Followings(追蹤者)</h5>
+      <div class="card-body">
+        {{#each user.Followings}}
+        <a href="/users/{{this.id}}" style="text-decoration:none;">
+          <img src="{{this.image}}" title="{{this.name}}" class="m-3"
+            style="height:100px; width:100px; object-fit:cover">
+        </a>
+        {{/each}}
+      </div>
+    </div>
+    <div class="card mt-3">
+      <h5 class="card-header">{{user.Followers.length}}Followings(追蹤者)</h5>
+      <div class="card-body">
+        {{#each user.Followers}}
+        <a href="/users/{{this.id}}" style="text-decoration:none;">
+          <img src="{{this.image}}" title="{{this.name}}" class="m-3"
+            style="height:100px; width:100px; object-fit:cover">
+        </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card mt-3">
+      <h5 class="card-header">{{user.commentedRestaurants.length}}已評論餐廳</h5>
+      <div class="card-body">
+        {{#each user.commentedRestaurants}}
+        <a href="/restaurants/{{this.id}}" style="text-decoration:none;">
+          <img src="{{this.image}}" title="{{this.name}}" class="m-3"
+            style="height:100px; width:100px; object-fit:cover">
+        </a>
+        {{/each}}
+      </div>
+    </div>
+    <div class="card mt-3">
+      <h5 class="card-header">{{user.FavoritedRestaurants.length}}收藏的餐廳</h5>
+      <div class="card-body">
+        {{#each user.FavoritedRestaurants}}
+        <a href="/restaurants/{{this.id}}" style="text-decoration:none;">
+          <img src="{{this.image}}" title="{{this.name}}" class="m-3"
+            style="height:100px; width:100px; object-fit:cover">
+        </a>
+        {{/each}}
+      </div>
+    </div>
   </div>
 </div>
