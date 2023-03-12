@@ -57,6 +57,7 @@ const userController = {
           if (!acc.some(restaurant => restaurant.id === comment.restaurantId)) acc.push(comment.Restaurant)
           return acc
         }, [])
+        user.isFollowed = req.user.Followings.some(f => f.id === user.id)
         return res.render('users/profile', { user })
       })
       .catch(err => next(err))
